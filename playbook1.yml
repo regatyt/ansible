@@ -1,0 +1,11 @@
+---
+- name: Installing the program
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: yum install htop
+    yum: name=htop state=latest
+
+#  - name: check service status
+#    service: name=sshd state=status
