@@ -1,0 +1,24 @@
+---
+- name: Install apache and upload web Page
+  hosts: all
+  become: yes
+
+  vars:
+   source_file: /home/site/index.html
+   dest_file: /var/www/html
+
+#  tasks:
+#  - name: Install apache server
+#   yum: name=httpd state=latest
+
+#  - name: Copy Web Page to Servers
+#    copy: src={{ source_file }} dest={{ dest_file}} mode=0555
+#    notify: Restart Apache
+
+#  - name: Restart Web And enable on boot
+#    service: name=httpd state =started enabled=yes
+
+#Handlers - не выполняется автоматически, только вызывается с помощью notify
+#  handlers:
+#  - name: Restart Apache
+#    service: name=https state=restarted
