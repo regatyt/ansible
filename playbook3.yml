@@ -24,5 +24,11 @@
 
   - debug:
       var: ansible_distribution
+#записать в переменную results вывод команды uptime
 
+  - shell: uptime
+    register: results
+
+  - debug:
+      var: results
 ...
