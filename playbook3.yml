@@ -1,0 +1,28 @@
+---
+- name: Variables
+  hosts: all
+  become: yes
+
+  vars:
+    Message1: Hello
+    Message2: World
+    Message3: Bla-Bla-Bla
+
+  tasks:
+
+  - name: Print Variable
+    debug:
+      var: Message3
+
+  - debug:
+      msg: "Print Hello world : {{ Message1 + Message2 }}"
+
+#соединить переменные
+#   - set_fact: full_message="{{ Message1 }} {{ Message2 }}"
+#   - debug:
+#     var: full_message
+
+  - debug:
+      var: ansible_distribution
+
+...
