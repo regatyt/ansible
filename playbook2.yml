@@ -8,8 +8,23 @@
 #   dest_file: /var/www/html
 
   tasks:
-  - name: Install apache server
-    yum: name=httpd state=latest
+
+  - block:
+    - name: Install apache server
+      yum: name=httpd state=latest
+
+    - name: enable apache
+      service: name=httpd state=started enabled=yes
+    when: ansible_os_family == "RED"
+
+
+  - block:
+    - name: install apache on ubuntu
+      apt: name=apache2 state=latest
+
+    - name: start apache2
+      service: name=apache2 state=started enabled=yes
+    when: ansible_os_family == "Debian"
 
 #  - name: Copy Web Page to Servers
 #    copy: src={{ source_file }} dest={{ dest_file}} mode=0555
