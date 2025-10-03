@@ -3,13 +3,13 @@
   hosts: all
   become: yes
 
-  vars:
-   source_file: /home/site/index.html
-   dest_file: /var/www/html
+#  vars:
+#   source_file: /home/site/index.html
+#   dest_file: /var/www/html
 
-#  tasks:
-#  - name: Install apache server
-#   yum: name=httpd state=latest
+  tasks:
+  - name: Install apache server
+    yum: name=httpd state=latest
 
 #  - name: Copy Web Page to Servers
 #    copy: src={{ source_file }} dest={{ dest_file}} mode=0555
