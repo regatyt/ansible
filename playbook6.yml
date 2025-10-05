@@ -1,0 +1,23 @@
+---
+
+- name: copy files in folder
+  hosts: all
+  become: yes
+
+  vars:
+    source_folder: /home/admin/testproj
+    dest_folder: /home/testroj2
+
+
+  tasks:
+#  - name: mk dest dir
+#    shell: mkdir /home/testroj2
+
+  - name: copy files in folder
+    copy: src={{ source_folder }}/{{ item }} dest={{ dest_folder  }}/{{ item  }} mode=0555
+    loop:
+     - file1.txt
+     - file2.txt
+
+
+...
