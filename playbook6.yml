@@ -14,10 +14,13 @@
 #    shell: mkdir /home/testroj2
 
   - name: copy files in folder
-    copy: src={{ source_folder }}/{{ item }} dest={{ dest_folder  }}/{{ item  }} mode=0555
-    loop:
-     - file1.txt
-     - file2.txt
+    copy: src={{ item }} dest={{ dest_folder }} mode=0555
+    with_fileglob: "{{ source_folder }}/*.*"
+
+#    copy: src={{ source_folder }}/{{item }} dest={{ dest_folder }}/{{ item }} mode=0555
+#    loop:
+#     - file1.txt
+#     - file2.txt
 
 
 ...
