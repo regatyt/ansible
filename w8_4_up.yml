@@ -1,0 +1,16 @@
+---
+- name: testing server up
+  hosts: all
+
+  tasks:
+
+  - name: w8 4 up server
+    wait_for:
+      host: any
+      state: started
+      timeout: 10
+    delegate_to: 127.0.0.1
+
+
+  - name: create_file
+    shell: echo file1 >> /home/admin/wait_4_up.txt
